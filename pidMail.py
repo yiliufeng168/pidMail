@@ -45,8 +45,8 @@ def pidMail(pid, mail, title, content):
             return
         try:
             with open("/proc/" + str(pid) + "/status") as _:
-                time.sleep(1)
                 pass
+            time.sleep(1)
         except Exception as e:
             print("pid is over")
             print(e)
@@ -67,10 +67,11 @@ def pidMail(pid, mail, title, content):
             return
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     argparse = argparse.ArgumentParser()
     argparse.add_argument("-p", "--pid", help="pid", type=int)
     argparse.add_argument("-m", "--mail", help="mail", type=str)
     argparse.add_argument("-t", "--title", help="title", type=str)
     argparse.add_argument("-c", "--content", help="content", type=str)
     args = argparse.parse_args()
+    pidMail(args.pid, args.mail, args.title, args.content)
